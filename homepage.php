@@ -1,3 +1,4 @@
+
  <!DOCTYPE html>
  <html lang="en">
 
@@ -34,7 +35,8 @@
          <div class="tengah">
              <div class="tutor-list">
                  <div class="menu-list">
-                     <img src="Asset/1.png">
+                     <img src="Asset/1.png"  href="order_acceptance.php">
+
                      <p>How To Order</p>
                  </div>
                  <div class="menu-list">
