@@ -11,7 +11,8 @@
 </head>
 
 <body class="container">
-    <header><nav class="navbar navbar-expand-lg" style="background-color: #FFDE59;">
+    <header>
+      <nav class="navbar navbar-expand-md py-4 navbar-expand-lg " style="background-color: #FFDE59;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">OnPrint Admin</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

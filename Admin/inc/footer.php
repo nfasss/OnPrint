@@ -11,8 +11,8 @@
 </head>
 <body class="container">
     
-    <footer class="bg-light">
-    <div class="text-center p-3" style="background: #00ADB4">
+    <footer class="bg-light-md py-4 ">
+    <div class="text-center p-4" style="background: #00ADB4">
             Unless explicity stated otherwise,all material is copyright © OnPrint 2022
     </div>
     </footer>
