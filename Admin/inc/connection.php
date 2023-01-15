@@ -1,30 +1,21 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "printing";
-$SITEURL = "http://localhost/ONPRINT/";
 
+define("DATABASE_HOST", "localhost");
+define("DATABASE_USER", "root");
+define("DATABASE_PASSWORD", "");
 
-$link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
+// 1. Connect to MySQL server
+$mysql = mysqli_connect(DATABASE_HOST, DATABASE_USER, DATABASE_PASSWORD);
 
-// to select the targeted database
-mysqli_select_db($link, "testdb") or die(mysqli_error());
-
-// to create a query to be executed in sql
-$query = "insert into user values('$user', '$pass')"
-	or die(mysqli_connect_error());
-
-// to run sql query in database
-$result = mysqli_query($link, $query);
-
-//Check whether the insert was successful or not
-if ($result) {
-
-	echo ("Data insert");
-} else {
-
-	die("Insert failed");
+// If connection failed, then display mysql error
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-//Close the database connection
-mysqli_close($link);
+
+// 2. Select the database named "guestbook"
+mysqli_select_db($mysql, "printing") or die(mysqli_error($mysql));
+
+// Set the default time zone to use in Malaysia
+date_default_timezone_set('Asia/Kuala_Lumpur');
+
+?>

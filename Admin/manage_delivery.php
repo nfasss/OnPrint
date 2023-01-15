@@ -14,7 +14,7 @@
     <div class="main-content">
         <div class="wrapper">
 
-            <h2>Manage Order</h2>
+            <h2>Manage Delivery</h2>
 
             <?php
             if (isset($_SESSION['update'])) {
@@ -41,10 +41,10 @@
                 mysqli_select_db($link, "printing")or die(mysqli_error()); 
 
             //SQL query
-            $strSQL = "SELECT * FROM delivery ORDER BY DELIVERYID DESC"; // DIsplay the Latest Order at First
+            $query = "SELECT * FROM delivery ORDER BY DELIVERYID DESC"; // DIsplay the Latest Order at First
 
             //Execute the query (the recordset $rs contains the result)
-            $rs = mysqli_query($link, $strSQL);
+            $rs = mysqli_query($link, $query);
 
             $sn = 1; //Create a Serial Number and set its initail value as 1
             $count = mysqli_num_rows($rs);
@@ -86,7 +86,7 @@
                                 ?>
                             </td>
                             <td>
-                                <a href="<?php echo $SITEURL; ?>Admin/update_delivery.php?id=<?php echo $DeliveryID; ?>" class="btn-secondary">Edit Delivery Details</a>
+                                <a href="update_delivery.php" class="btn-secondary">Edit Delivery Details</a>
                                 <a href="<?php echo $SITEURL; ?>Admin/delete_delivery.php?id=<?php echo $DeliveryID; ?>" class="btn-danger">Delete Delivery</a>
                             </td>
                         </tr>
