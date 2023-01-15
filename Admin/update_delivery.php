@@ -1,6 +1,7 @@
 <?php include('D:\Xampp\htdocs\OnPrint\Admin\inc\header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,94 +11,91 @@
 </head>
 
 <body>
+    <?php
+    $mysql = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
+    mysqli_select_db($mysql, "printing") or die(mysqli_error($mysql));
+    //CHeck whether id is set or not
 
-<div class="main-content">
-    <div class="wrapper">
-        <h1>Update Delivery</h1>
-        <br><br>
-
-
-        <?php
-       $mysql = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
-       mysqli_select_db($mysql, "printing") or die(mysqli_error($mysql));
-
-            //CHeck whether id is set or not
-        if (isset($_GET['DeliveryID'])||($DeliveryDate = $_GET['DeliveryDate'])||($_GET['DeliveryAddress'])||($DeliveryStatus = $_GET['DeliveryStatus']
-        ) ) {
-            //GEt the Delivery Details
-            $DeliveryID = ($_GET['DeliveryID']);
-            $DeliveryDate = ($_GET['DeliveryDate']);
-            $DeliveryAddress = ($_GET['DeliveryAddress']);
-            $DeliveryStatus = ($_GET['DeliveryStatus']);
+    $DeliveryID = $_GET['id'];
+    $query = "SELECT * FROM delivery WHERE DeliveryID='$DeliveryID'";
+    $rs = mysqli_query($mysql, $query) or die(mysqli_error($mysql));
 
 
-            //Get all other details based on this id
-            //SQL Query to get the delivery details
-            $query = "SELECT * FROM delivery WHERE DeliveryID='$DeliveryID'  DESC";
-            //Execute Query
-            $rs = mysqli_query($mysql, $query) or die(mysqli_error($mysql));
-            //Count Rows
-            $count = mysqli_num_rows($rs);
+    //Get all other details based on this id
+    //SQL Query to get the delivery details
 
-            mysqli_close($mysql);
+    //Execute Query
+    //Count Rows
 
-            if ($count == 1) {
-                //Detail Availble
-                while ($row = mysqli_fetch_assoc($rs))
-                    ;
-                $DeliveryID = $row['DeliveryID'];
-                $DeliveryDate = $row['DeliveryDate'];
-                $DeliveryAddress = $row['DeliveryAddress'];
-                $DeliveryStatus = $row['DeliveryStatus'];
-            }
-        }
-        ?>
-
-        <form action="" method="POST">
-        
-            <table class="tbl-30">
-                <tr>
-                    <td>Delivery ID </td>
-                    <td><b> <?php echo $DeliveryID; ?>#</b></td>
-                </tr>
-                <tr>
-                    <td>Delivery Date </td>
-                    <td><b> <?php echo $DeliveryDate; ?> </b></td>
-                </tr>
-
-                <tr>
-                    <td>Status</td>
-                    <td>
-                        <select name="DeliveryStatus">
-                            <option <?php if($DeliveryStatus=="Ordered"){echo "selected";} ?> value="Ordered">Ordered</option>
-                            <option <?php if($DeliveryStatus=="On Delivery"){echo "selected";} ?> value="On Delivery">On Delivery</option>
-                            <option <?php if($DeliveryStatus=="Delivered"){echo "selected";} ?> value="Delivered">Delivered</option>
-                            <option <?php if($DeliveryStatus=="Cancelled"){echo "selected";} ?> value="Cancelled">Cancelled</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Customer Address: </td>
-                    <td>
-                        <textarea name="DeliveryAddress" cols="100" rows="4"><?php echo $DeliveryAddress; ?></textarea>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td clospan="2">
-                        <input type="hidden" name="id" value="<?php echo $DeliveryID; ?>">
-                        <input type="submit" name="submit" value="Update Delivery" class="btn-secondary">
-                    </td>
-                </tr>
-            </table>
-        
-        </form>
+    //Detail Availble
+    $row = mysqli_fetch_assoc($rs);
+    $DeliveryDate = $row['DeliveryDate'];
+    $DeliveryAddress = $row['DeliveryAddress'];
+    $DeliveryStatus = $row['DeliveryStatus'];
 
 
-        <?php 
+    ?>
+
+    <div class="main-content">
+        <div class="wrapper">
+            <h1>Update Delivery</h1>
+            <br><br>
+
+
+
+            <form action="update_delivery.php" method="POST">
+
+                <table class="tbl-30">
+                    <tr>
+                        <td>Delivery ID </td>
+                        <td><b>#<?php echo $DeliveryID; ?></b></td>
+                    </tr>
+                    <tr>
+                        <td>Delivery Date </td>
+                        <td><b> <?php echo $DeliveryDate; ?> </b></td>
+                    </tr>
+
+                    <tr>
+                        <td>Status</td>
+                        <td>
+                            <select name="DeliveryStatus">
+                                <option <?php if ($DeliveryStatus == "Ordered") {
+                                            echo "selected";
+                                        } ?> value="Ordered">Ordered</option>
+                                <option <?php if ($DeliveryStatus == "On Delivery") {
+                                            echo "selected";
+                                        } ?> value="On Delivery">On Delivery</option>
+                                <option <?php if ($DeliveryStatus == "Delivered") {
+                                            echo "selected";
+                                        } ?> value="Delivered">Delivered</option>
+                                <option <?php if ($DeliveryStatus == "Cancelled") {
+                                            echo "selected";
+                                        } ?> value="Cancelled">Cancelled</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Customer Address: </td>
+                        <td>
+                            <textarea name="DeliveryAddress" cols="100" rows="4"><?php echo $DeliveryAddress; ?></textarea>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td clospan="2">
+                            <input type="hidden" name="id" value="<?php echo $DeliveryID; ?>">
+                            <input type="submit" name="submit" value="Update Delivery" class="btn-secondary">
+                        </td>
+                    </tr>
+                </table>
+
+            </form>
+
+
+            <?php
             //CHeck whether Update Button is Clicked or Not
-            if(isset($_POST['submit']))
-            {
+            if (isset($_POST['submit'])) {
                 //echo "Clicked";
                 //Get All the Values from Form
                 $DeliveryID = $row['DeliveryID'];
@@ -105,25 +103,25 @@
                 $DeliveryAddress = $row['DeliveryAddress'];
                 $DeliveryStatus = $row['DeliveryStatus'];
 
+                extract($_POST);
+                $query = "UPDATE delivery SET DeliveryAddress = '$DeliveryAddress',
+                 DeliveryStatus = '$DeliveryStatus'
+                 WHERE DeliveryID = '$id'";
+                $rs = mysqli_query($mysql, $query) or die(mysqli_error($mysql));
 
-                $Deliverystatus = $_POST['Deliverystatus'];
-
-                //Update the Values
-                $sql2 = "UPDATE delivery SET 
-                    DeliveryStatus = '$Deliverystatus',
-                    DeliveryAddress = '$DeliveryAddress'
-                    WHERE DeliveryID=$DeliveryID
-                ";
-
-                //Execute the Query
-                $rs2 = mysqli_query($link, $strSQL);
+                if ($rs) {
+                    echo "<script type='text/javascript'>
+                        window.location='manage_delivery.php'
+                         </script>";
+                } else {
+                    echo "error: " . $query . "<br>" . mysqli_error($mysql);
+                }
             }
+            ?>
 
-        ?>
 
-
+        </div>
     </div>
-</div>
 </body>
 
 </html>
