@@ -31,7 +31,6 @@
                     <th>Delivery Address</th>
                     <th>Delivery Status</th>
                     <th>Actions</th>
-                    <th>Delete</th>
                 </tr>
                 <?php
                 //Get all the orders from database
@@ -68,7 +67,6 @@
                             <td>#<?php echo $DeliveryID; ?> </td>
                             <td><?php echo $DeliveryDate; ?></td>
                             <td><?php echo $DeliveryAddress; ?></td>
-                            <td><?php echo $DeliveryStatus; ?></td>
 
 
                             <td>
@@ -86,8 +84,8 @@
                                 ?>
                             </td>
                             <td>
-                                <a href="update_delivery.php" class="btn-secondary">Edit Delivery Details</a>
-                                <a href="<?php echo $SITEURL; ?>Admin/delete_delivery.php?id=<?php echo $DeliveryID; ?>" class="btn-danger">Delete Delivery</a>
+                                <a href="update_delivery.php?id=<?php echo $DeliveryID; ?>"  class="btn-secondary">Edit Delivery Details</a>
+                                <a href="delete_delivery.php?id=<?php echo $DeliveryID; ?>" class="btn-danger">Delete Delivery</a>
                             </td>
                         </tr>
 
