@@ -28,7 +28,7 @@
             // to make a connection with database
 	            $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
             //Select the database.
-                mysqli_select_db($link, "printing")or die(mysqli_error()); 
+                mysqli_select_db($link, "printing")or die(mysqli_error($link)); 
 
             //SQL query
             $query = "SELECT * FROM commision ORDER BY COMMISIONID DESC"; // DIsplay the Latest Order at First
