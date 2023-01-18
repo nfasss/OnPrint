@@ -58,7 +58,7 @@
                             <td>#<?php echo $CommisionID; ?> </td>
                             <td><?php echo $Rider_UserID; ?></td>
                             <td><?php echo $CommisionDate; ?></td>
-                            <td><?php echo $CommisionTotal; ?></td>
+                            <td>RM <?php echo $CommisionTotal; ?>.00</td>
 
                             <td>
                                 <a href="delete_commision.php?id=<?php echo $CommisionID; ?>" class="btn-danger">Delete Commision</a>
