@@ -62,15 +62,15 @@
                                 <option <?php if ($DeliveryStatus == "Ordered") {
                                             echo "selected";
                                         } ?> value="Ordered">Ordered</option>
-                                <option <?php if ($DeliveryStatus == "On Delivery") {
+                                <option <?php if ($DeliveryStatus == "Picked up") {
                                             echo "selected";
-                                        } ?> value="On Delivery">On Delivery</option>
+                                        } ?> value="Picked up">Picked up</option>
+                                <option <?php if ($DeliveryStatus == "On delivery") {
+                                            echo "selected";
+                                        } ?> value="On delivery">On delivery</option>
                                 <option <?php if ($DeliveryStatus == "Delivered") {
                                             echo "selected";
                                         } ?> value="Delivered">Delivered</option>
-                                <option <?php if ($DeliveryStatus == "Cancelled") {
-                                            echo "selected";
-                                        } ?> value="Cancelled">Cancelled</option>
                             </select>
                         </td>
                     </tr>

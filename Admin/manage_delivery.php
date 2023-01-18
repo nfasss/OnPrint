@@ -74,11 +74,11 @@
                                 // Ordered, On Delivery, Delivered, Cancelled
                                 if ($DeliveryStatus == "Ordered") {
                                     echo "<label>$DeliveryStatus</label>";
-                                } elseif ($DeliveryStatus == "On Delivery") {
+                                } elseif ($DeliveryStatus == "Picked up") {
                                     echo "<label style='color: orange;'>$DeliveryStatus</label>";
-                                } elseif ($DeliveryStatus == "Delivered") {
+                                } elseif ($DeliveryStatus == "On delivery") {
                                     echo "<label style='color: green;'>$DeliveryStatus</label>";
-                                } elseif ($DeliveryStatus == "Cancelled") {
+                                } elseif ($DeliveryStatus == "Delivered") {
                                     echo "<label style='color: red;'>$DeliveryStatus</label>";
                                 }
                                 ?>

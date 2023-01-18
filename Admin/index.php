@@ -34,25 +34,7 @@
                 <br />
                 Total Order
             </div>
-            <div class="col-4 text-center">
 
-                <?php
-                // to make a connection with database
-                $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
-                //Select the database.
-                mysqli_select_db($link, "printing") or die(mysqli_error($link));
-                //Sql Query 
-                $query = "SELECT * FROM commision";
-                //Execute Query
-                $rs = mysqli_query($link, $query);
-                //Count Rows
-                $count = mysqli_num_rows($rs);
-                ?>
-
-                <h1><?php echo $count; ?></h1>
-                <br />
-                Commision
-            </div>
             <div class="clearfix"></div>
         </div>
     </div>

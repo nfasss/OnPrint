@@ -9,6 +9,12 @@ body {
     padding: 0px;
     font-family: 'Open Sans',sans-serif;
 }
+.main {   
+    -ms-flex: 100%; /* IE10 */
+    flex: 100%;
+    background-color: white;
+    padding: 20px;
+  }
 
 .home-header{
     background-image: url("../Asset/umplawo.jpg");
@@ -174,6 +180,45 @@ background-color: #023579;
     margin-top: 0px;
     background: #00ADB4
 }
+/* Footer */
+.footer {
+    padding: 30px;
+    text-align: center;
+    background: #00ADB4;
+  }
+.food-menu{
+    background-color: #ececec;
+    padding: 4% 0;
+}
+.food-menu-box{
+    width: 43%;
+    margin: 1%;
+    padding: 2%;
+    float: left;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.food-menu-img{
+    width: 20%;
+    float: left;
+}
+
+.food-menu-desc{
+    width: 70%;
+    float: left;
+    margin-left: 8%;
+}
+
+.food-price{
+    font-size: 1.2rem;
+    margin: 2% 0;
+}
+.food-detail{
+    font-size: 1rem;
+    color: #747d8c;
+}
+
 
 @media screen and (max-width: 991.98px) {
     .wrapper {
@@ -210,6 +255,15 @@ background-color: #023579;
         display: block;
         width: 100%;
         height: auto;
+    }
+    .food-menu{
+        padding: 20% 0;
+    }
+
+    .food-menu-box{
+        width: 90%;
+        padding: 5%;
+        margin-bottom: 5%;
     }
 
     .menu-list {
