@@ -202,7 +202,7 @@ if ($count > 0) {
             <div class="logo"><a href=''>OnPrint.</a></div>
             <div class="menu">
                 <ul>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="http://localhost/OnPrint/Function/homepage.php">Home</a></li>
                     <li><a href="#order">Order</a></li>
                     <li><a href="#profile">Our Profile</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -251,10 +251,37 @@ if ($count > 0) {
                     </div>
                 </article>
                 <div class="track">
+
+                    <?php
+                    // Ordered, On Delivery, Delivered, Cancelled
+                    if ($DeliveryStatus == "Ordered") {
+                        echo '
+                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Ordered</span> </div>
+                    <div class="step"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked up</span> </div>
+                    <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On delivery </span> </div>
+                    <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered</span> </div>';
+                    } elseif ($DeliveryStatus == "Picked up") {
+                        echo '
                     <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Ordered</span> </div>
                     <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked up</span> </div>
                     <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On delivery </span> </div>
-                    <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered</span> </div>
+                    <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered</span> </div>';
+                    } elseif ($DeliveryStatus == "On delivery") {
+                        echo '
+                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Ordered</span> </div>
+                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked up</span> </div>
+                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On delivery </span> </div>
+                    <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered</span> </div>';
+                    } elseif ($DeliveryStatus == "Delivered") {
+                        echo '
+                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Ordered</span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked up</span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On delivery </span> </div>
+                        <div class="step active"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered</span> </div>';
+                    } else {
+                        echo 'No order created ';
+                    }
+                    ?>
                 </div>
                 <hr>
                 <div class="container">
@@ -262,16 +289,16 @@ if ($count > 0) {
                 </div>
                 <hr>
                 <a href="order.php?food_id=<?php echo $OrderID; ?>" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
-                
+
             </div>
         </article>
     </div>
     <div id="footer">
-         <div class="wrapper">
-             <b> Unless explicity stated otherwise,all material is copyright © OnPrint 2022
-             </b>
-         </div>
-     </div>
+        <div class="wrapper">
+            <b> Unless explicity stated otherwise,all material is copyright © OnPrint 2022
+            </b>
+        </div>
+    </div>
 </body>
 
 </html>
