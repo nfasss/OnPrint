@@ -8,6 +8,7 @@ body {
     margin: 0px;
     padding: 0px;
     font-family: 'Open Sans',sans-serif;
+     background-color: #023579;
 }
 .main {   
     -ms-flex: 100%; /* IE10 */
