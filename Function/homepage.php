@@ -16,11 +16,11 @@
              <div class="logo"><a href=''>OnPrint.</a></div>
              <div class="menu">
                  <ul>
-                     <li><a href="#home">Home</a></li>
+                     <li><a href="homepage.php">Home</a></li>
                      <li><a href="#order">Order</a></li>
                      <li><a href="#profile">Our Profile</a></li>
                      <li><a href="#contact">Contact</a></li>
-                     <li><a href="" class="btn-login">Sign Up</a></li>
+                     <li><a href="Login.php" class="btn-login">Sign Up</a></li>
                  </ul>
              </div>
          </div>
