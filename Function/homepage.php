@@ -1,7 +1,5 @@
-
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html lang="en">
-
  <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +7,6 @@
      <title>OnPrint</title>
      <link rel="stylesheet" href="Style/style.css">
  </head>
-
  <body>
      <nav>
          <div class="wrapper">
@@ -36,7 +33,6 @@
              <div class="tutor-list">
                  <div class="menu-list">
                      <img src="Asset/1.png"  href="order_acceptance.php">
-
                      <p>How To Order</p>
                  </div>
                  <div class="menu-list">
@@ -55,14 +51,11 @@
              </div>
          </div>
      </section>
-
      <div id="footer">
          <div class="wrapper">
              <b> Unless explicity stated otherwise,all material is copyright © OnPrint 2022
              </b>
          </div>
      </div>
-
  </body>
-
  </html>
