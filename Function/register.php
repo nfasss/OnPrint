@@ -1,3 +1,7 @@
+<?php
+session_start();
+include("database.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OnPrint</title>
-    <link rel="stylesheet" href="Style/register style.css">
+    <link rel="stylesheet" href="Style/style.css">
 </head>
 
 <header>
@@ -17,7 +21,7 @@
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
                     <li><a href="#courses">Order</a></li>
-                    <li><a href="#tutors">Our Profile</a></li>
+                    <li><a href="Profile_manage.php">Our Profile</a></li>
                     <li><a href="#partners">Contact</a></li>
                     <li><a href="Login.php" class="btn-login">Sign Up</a></li>
                 </ul>
@@ -36,7 +40,7 @@
             </span>
         </div>
         <div class="container_L">
-            <form class="myForm" action="login.php" method="post">
+            <form class="myForm" action="insertUser_mysql.php" method="post">
                 <label for="name">First Name:</label>
                 <input type="text" name="UserFirstName" placeholder="Enter First Name"><br>
                 <label for="name">Last Name:</label>
@@ -51,7 +55,13 @@
                 <input type="text" name="UserState" placeholder="Enter State"><br>
                 <label for="name">Poscode:</label>
                 <input type="text" name="UserPoscode" placeholder="Enter Poscode"><br>
-
+                <label>User Type:</label>
+                <select id="UserType" name="UserType">
+                    <option value="staff">Staff</option>
+                    <option value="student">Student</option>
+                    <option value="administrator">Administrator</option>
+                </select>
+                <br>
                 <br>
                 <input type="button" class="btn1" value="Clear" style="padding: 10px 50px;">
                 <input type="submit" class="btn2" value="Submit" style="padding: 10px 50px;">
