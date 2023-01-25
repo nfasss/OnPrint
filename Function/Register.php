@@ -1,8 +1,6 @@
 <?php
 session_start();
 include("database.php");
-include("userlist_mysql.php");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,55 +32,48 @@ include("userlist_mysql.php");
 </header>
 
 <body>
-    <div class="title">
-        <h2>User Profile</h2>
-    </div>
-    <div class="sidebar">
-        <h1>Menu</h1>
-        <br>
-        <ul>
-            <li><a href="Profile_manage.php">Display Profile</a></li>
-            <br>
-            <li><a href="updateUser.php">Manage Profile</a></li>
-            <br>
-            <li><a href="Report.php">Report</a></li>
-            <br>
-            <li><a href="homepage.php">Logout</a></li>
-        </ul>
-    </div>
 
-    <div class="container_L">
+    <div class="container">
+        <div class="container_R">
+            <span class="title">
+                <h2>NEW LOGIN ACCOUNT</h2>
+            </span>
+        </div>
+        <div class="container_L">
+            <form class="myForm" action="insertUser_mysql.php" method="post">
+                <label for="name">First Name:</label>
+                <input type="text" name="UserFirstName" placeholder="Enter First Name"><br>
+                <label for="name">Last Name:</label>
+                <input type="text" name="UserLastName" placeholder="Enter Last Name"><br>
+                <label for="name">Email:</label>
+                <input type="text" name="UserEmail" placeholder="Enter Email"><br>
+                <label for="name">Phone Number:</label>
+                <input type="text" name="UserPhoneNum" placeholder="Enter Phone Number"><br>
+                <label for="name">Address:</label>
+                <input type="text" name="UserAddress" placeholder="Enter Address"><br>
+                <label for="name">State:</label>
+                <input type="text" name="UserState" placeholder="Enter State"><br>
+                <label for="name">Poscode:</label>
+                <input type="text" name="UserPoscode" placeholder="Enter Poscode"><br>
+                <label>User Type:</label>
+                <select id="UserType" name="UserType">
+                    <option value="staff">Staff</option>
+                    <option value="student">Student</option>
+                    <option value="administrator">Administrator</option>
+                </select>
+                <br>
+                <br>
+                <input type="button" class="btn1" value="Clear" style="padding: 10px 50px;">
+                <input type="submit" class="btn2" value="Submit" style="padding: 10px 50px;">
+            </form>
 
-        <form action="#" method="post">
-            <table style="width:100%">
-                <tr>
-                    <th>User ID</th>
-                    <th>UserFirstName</th>
-                    <th>UserLastName</th>
-                    <th>UserEmail</th>
-                    <th>UserPhoneNum</th>
-                    <th>UserAddress
-                    <th>UserState</th>
-                    <th>UserPoscode</th>
-                    <th>UserType</th>
-                    <th>Action</th>
-                </tr>
-                <?php showUserList() ?>
-            </table>
-            <br>
-            <input type="button" class="btn1" value="Delete" style="padding: 10px 50px;" onclick=" location.href='delete_mysql.php'">
-            <input type="button" class="btn2" value="Edit" style="padding: 10px 50px;" onclick=" location.href='update_mysql.php'">
-
-            <br> <br>
-            <input type="button" class="btn1" value="Add User" style="padding: 10px 50px;" onclick=" location.href='register.php'">
-            <input type="button" class="btn2" value="Save" style="padding: 10px 50px;" </form>
-
+        </div>
     </div>
     <footer>
         <h4>Unless explicitly stated otherwise, all material is copyright &copy; OnPrint 2022.</h4>
     </footer>
 
-</body>
+</html>
 <style>
     * {
         text-decoration: none;
@@ -94,7 +85,7 @@ include("userlist_mysql.php");
         padding: 0px;
         font-family: 'Open Sans', sans-serif;
         background-color: #023579;
-
+        background-image: url("umplawo.jpg");
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -114,6 +105,10 @@ include("userlist_mysql.php");
     }
 
     .home-header {
+        /* background-image: url("umplawo.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;*/
         padding: 10% 0;
         margin-bottom: 0;
         opacity: 0.5;
@@ -125,7 +120,7 @@ include("userlist_mysql.php");
 
     .container {
         width: 80%;
-        margin: 0 auto;
+        margin: 0;
         padding: 1%;
     }
 
@@ -197,9 +192,9 @@ include("userlist_mysql.php");
         color: #364f6b;
         width: 100%;
         line-height: 50px;
-        padding: 50px;
-        margin-left: 50px;
-        margin-top: 0px;
+        padding: 10px;
+        margin-left: 100px;
+
     }
 
     a.btn-login {
@@ -293,15 +288,24 @@ include("userlist_mysql.php");
     }
 
     .container_L {
-        width: 80%;
-        margin: 200px;
+        width: 50%;
+        margin: 100px;
+        margin-top: 10px;
         padding: 20px;
         background-color: white;
-        margin-top: 10px;
-        height: 500px;
-
-
     }
+
+    /*.container_L input[type=submit] {
+        display: flex;
+        background-color: #81bd67;
+        color: black;
+        padding: 10px 50px;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        opacity: 0.9;
+        border-radius: 5px;
+    }*/
 
     input[type=text],
     input[type=password] {
@@ -314,7 +318,7 @@ include("userlist_mysql.php");
     }
 
     .btn1 {
-        margin-left: 80px;
+        margin-left: 100px;
         background: #5f9ea0;
         border-radius: 5px;
     }
@@ -323,48 +327,5 @@ include("userlist_mysql.php");
         margin-left: 120px;
         background: #5f9ea0;
         border-radius: 5px;
-    }
-
-    .table,
-    th,
-    td {
-        border: 1px solid black;
-        line-height: 32px;
-        vertical-align: top;
-        border-bottom: 1px solid black;
-
-    }
-
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        border: 1px solid black;
-        width: 50%;
-    }
-
-
-    td {
-        border: 1px solid blue;
-        border-collapse: collapse;
-        text-align: center;
-        padding: 2px;
-        background-color: white;
-    }
-
-    th {
-        border: 1px solid black;
-        text-align: center;
-        padding: 4px;
-        background: #D9D9D9;
-        color: black;
-    }
-
-    .sidebar {
-        margin-top: -22px;
-        background-color: white;
-        height: 50%;
-        width: 150px;
-        text-align: center;
-        font-size: 16px;
     }
 </style>
