@@ -36,7 +36,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="http://localhost/OnPrint/Admin/manage_delivery.php">Manage Delivery</a></li>
             <li><a class="dropdown-item" href="http://localhost/OnPrint/Admin/transaction.php">Commision Transcation</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="http://localhost/OnPrint/Admin/manage_feedback.php">Feedback Report</a></li>
           </ul>
         </li>
       </ul>
