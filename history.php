@@ -10,7 +10,7 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<link rel="stylesheet" href="yolstyle.css" />
+		<link rel="stylesheet" href="style2.css" />
 		
 		<title>OnPrint History Page</title>
 	
@@ -24,7 +24,7 @@
 			
 				<div class="logo">
 				
-					<a href=''>OnPrint.</a>
+					<a href='homepage.php'>OnPrint.</a>
 				
 				</div>
 				
@@ -32,8 +32,8 @@
 					
 					<ul>
 						
-						<li><a href="#home">Home</a></li>
-						<li><a href="#courses">Order</a></li>
+						<li><a href="homepage.php">Home</a></li>
+						<li><a href="history.php">Order</a></li>
 						<li><a href="#tutors">Our Profile</a></li>
 						<li><a href="#partners">Contact</a></li>
 						<li><a href="" class="btn-login">Sign Up</a></li>
@@ -62,6 +62,8 @@
 				
 				<th>OrderID</th>
 				
+				<th>Delivery Address</th>
+				
 				<th>Option</th>
 			
 			</tr>
@@ -86,6 +88,7 @@
 							<td>$row[PaymentMethod]</td>
 							<td>$row[UserID]</td>
 							<td>$row[OrderID]</td>
+							<td>$row[DeliveryAddress]</td>
 							
 							<td>
 							

@@ -10,7 +10,7 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<link rel="stylesheet" href="yolstyle.css" />
+		<link rel="stylesheet" href="lstyle2.css" />
 		
 		<title>OnPrint Confirmation Page</title>
 	
@@ -33,7 +33,7 @@
 					<ul>
 						
 						<li><a href="homepage.php">Home</a></li>
-						<li><a href="#courses">Order</a></li>
+						<li><a href="history.php">Order</a></li>
 						<li><a href="#tutors">Our Profile</a></li>
 						<li><a href="#partners">Contact</a></li>
 						<li><a href="" class="btn-login">Sign Up</a></li>

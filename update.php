@@ -10,7 +10,7 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<link rel="stylesheet" href="yolstyle.css" />
+		<link rel="stylesheet" href="style2.css" />
 		
 		<title>OnPrint Update Payment Page</title>
 	
@@ -24,7 +24,7 @@
 			
 				<div class="logo">
 				
-					<a href=''>OnPrint.</a>
+					<a href='homepage.php'>OnPrint.</a>
 				
 				</div>
 				
@@ -32,8 +32,8 @@
 					
 					<ul>
 						
-						<li><a href="#home">Home</a></li>
-						<li><a href="#courses">Order</a></li>
+						<li><a href="homepage.php">Home</a></li>
+						<li><a href="history.php">Order</a></li>
 						<li><a href="#tutors">Our Profile</a></li>
 						<li><a href="#partners">Contact</a></li>
 						<li><a href="" class="btn-login">Sign Up</a></li>
@@ -56,7 +56,7 @@
 			
 				$result = mysqli_query($conn, $query); 
 				
-				$row = $result->fetch_assoc();
+				$row = mysqli_fetch_array($result);
 				
 			?>
 			
@@ -117,11 +117,7 @@
 				
 				<br><br>
 				
-				<?php
-				
-					echo "<a class='button' href='updatedb.php?upt_comm=$row[PaymentID]'>Update</a>"
-				
-				?>
+				<a href="updatedb.php?paymentID=<?php echo $row["PaymentID"] ?>"><input type="submit" class="button" value="Update"></a>
 				
 			</div>
 		
