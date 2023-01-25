@@ -14,18 +14,11 @@
     <?php
     $mysql = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
     mysqli_select_db($mysql, "printing") or die(mysqli_error($mysql));
-    //CHeck whether id is set or not
 
     $DeliveryID = $_GET['id'];
     $query = "SELECT * FROM delivery WHERE DeliveryID='$DeliveryID'";
     $rs = mysqli_query($mysql, $query) or die(mysqli_error($mysql));
 
-
-    //Get all other details based on this id
-    //SQL Query to get the delivery details
-
-    //Execute Query
-    //Count Rows
 
     //Detail Availble
     $row = mysqli_fetch_assoc($rs);

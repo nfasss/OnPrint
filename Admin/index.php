@@ -32,7 +32,7 @@
 
                 <h1><?php echo $count; ?></h1>
                 <br />
-                Total Order
+                Total Delivery
             </div>
 
             <div class="clearfix"></div>

@@ -243,11 +243,13 @@ if ($count > 0) {
                                 //Get all the order details
                                 $DeliveryID = $row['DeliveryID'];
                                 $DeliveryStatus = $row['DeliveryStatus'];
+                                $DeliveryAddress = $row['DeliveryAddress'];
                             }
                         }
                         ?>
                         <div class="col"> <strong>Status:</strong> <br> <?php echo $DeliveryStatus ?></div>
                         <div class="col"> <strong>DeliveryID: </strong> <br>#<?php echo $DeliveryID ?> </div>
+                        <div class="col"> <strong>Delivery Address: </strong> <br><?php echo $DeliveryAddress ?> </div>
                     </div>
                 </article>
                 <div class="track">
@@ -289,7 +291,7 @@ if ($count > 0) {
                 </div>
                 <hr>
                 <a href="order.php?food_id=<?php echo $OrderID; ?>" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
-
+                <a href="feedback.php?food_id=<?php echo $OrderID; ?>" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-right"></i> Next</a>
             </div>
         </article>
     </div>
