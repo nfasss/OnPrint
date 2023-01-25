@@ -108,7 +108,7 @@ if ($count > 0) {
                 <ul>
                     <li><a href="http://localhost/OnPrint/Function/homepage.php">Home</a></li>
                     <li><a href="#order">Order</a></li>
-                    <li><a href="#profile">Our Profile</a></li>
+                    <li><a href="orderstatus.php">Track Order</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="" class="btn-login">Sign Up</a></li>
                 </ul>

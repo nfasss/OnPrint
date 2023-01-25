@@ -18,7 +18,7 @@
                  <ul>
                      <li><a href="homepage.php">Home</a></li>
                      <li><a href="#order">Order</a></li>
-                     <li><a href="#profile">Our Profile</a></li>
+                     <li><a href="orderstatus.php">Track Order</a></li>
                      <li><a href="#contact">Contact</a></li>
                      <li><a href="Login.php" class="btn-login">Sign Up</a></li>
                  </ul>
@@ -54,7 +54,7 @@
              </div>
          </div>
      </section>
-     <br><br><br><br><br>
+     <br><br><br><br>
      <div id="footer">
         <div class="wrapper">
             <b> Unless explicity stated otherwise,all material is copyright © OnPrint 2022
