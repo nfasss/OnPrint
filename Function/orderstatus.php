@@ -288,10 +288,14 @@ if ($count > 0) {
                 <hr>
                 <div class="container">
                     <b>Total Payment </b>
+                    <br>
+                    <b>Please scan this QR code to give feedback!</b>
+                    <br>
+                    <img src="..\Asset\chart.png">
                 </div>
                 <hr>
-                <a href="order.php?food_id=<?php echo $OrderID; ?>" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
-                <a href="feedback.php?food_id=<?php echo $OrderID; ?>" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-right"></i> Next</a>
+                <a href="order.php?id=<?php echo $OrderID; ?>" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
+                <a href="feedback.php?id=<?php echo $OrderID; ?>" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-right"></i> Next</a>
             </div>
         </article>
     </div>

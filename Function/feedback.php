@@ -76,7 +76,7 @@ $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 mysqli_select_db($link, "printing") or die(mysqli_error($link));
 
 //SQL query
-$query = "SELECT * FROM orders ORDER BY OrderID DESC"; // DIsplay the Latest Order at First
+$query = "SELECT * FROM delivery ORDER BY DeliveryID DESC"; // DIsplay the Latest Order at First
 
 //Execute the query (the recordset $rs contains the result)
 $rs = mysqli_query($link, $query);
@@ -91,7 +91,7 @@ if ($count > 0) {
     //Order Available
     while ($row = mysqli_fetch_assoc($rs)) {
         //Get all the order details
-        $OrderID = $row['OrderID'];
+        $DeliveryID = $row['DeliveryID'];
         $Feedback = $row['Feedback'];
         $Complaint = $row['Complaint'];
     }
@@ -143,8 +143,7 @@ if ($count > 0) {
             <div class="form-check mb-4">
                 <?php if ($Feedback == "Very Good") {
                     echo "selected"; }?><input name='option' type='radio' value='Very Good'>
-                
-                <label class="ml-3">Very good</label>
+                    <label class="ml-3">Very good</label>
             </div>
             <div class="form-check mb-4">
             <?php if ($Feedback == "Good") {
@@ -173,9 +172,8 @@ if ($count > 0) {
 
             <!-- Modal Footer-->
             <div class="modal-footer">
-                <a href="" class="btn btn-primary">Send
-                </a>
-                <a href="http://localhost/OnPrint/Function/orderstatus.php" class="btn btn-outline-primary" data-dismiss="modal">Cancel</a>
+                <a href="insert_feedback.php?id=<?php echo $DeliveryID; ?>" class="btn btn-primary">Send</a>
+                <a href="orderstatus.php?id=<?php echo $DeliveryID; ?>" class="btn btn-outline-primary" data-dismiss="modal">Cancel</a>
             </div>
 
         </div>
