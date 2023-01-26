@@ -37,6 +37,8 @@ if ($count > 0) {
 ?>
 
 
+
+
 <body>
     <nav>
         <div class="wrapper">
@@ -72,7 +74,7 @@ if ($count > 0) {
         </div>
 
         <div class = "table1">
-        <table style = "width:100%">
+            <table style = "border: 2px solid black, border-collapse: collapse;">
             <tr>
                 <th>Quantity of Copy</th>
                 <th>Type of Paper</th>
@@ -131,13 +133,11 @@ if ($count > 0) {
              <option value="110gsm">110 GSM</option>
             </select>
             <br><br>
-            <a href = "Order List.php"> <button class="order list">Complete</button>
             </form>
         </div>
-
-        </section>
-
 </div>
+
+<a href = "Order List.php"> <button class="order list">Complete</button>
 
     <div id="footer">
         <div class="wrapper">
