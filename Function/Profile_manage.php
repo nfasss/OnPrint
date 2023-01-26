@@ -69,10 +69,10 @@ include("userlist_mysql.php");
                 </tr>
                 <?php showUserList() ?>
             </table>
-            <br>
+            <!-- <br>
             <input type="button" class="btn1" value="Delete" style="padding: 10px 50px;" onclick=" location.href='delete_mysql.php'">
             <input type="button" class="btn2" value="Edit" style="padding: 10px 50px;" onclick=" location.href='update_mysql.php'">
-
+-->
             <br> <br>
             <input type="button" class="btn1" value="Add User" style="padding: 10px 50px;" onclick=" location.href='register.php'">
             <input type="button" class="btn2" value="Save" style="padding: 10px 50px;" </form>
