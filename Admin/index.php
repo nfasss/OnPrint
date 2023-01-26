@@ -34,10 +34,34 @@
                 <br />
                 Total Delivery
             </div>
+            <div class="col-4 text-center">
+
+                <?php
+                //Creat SQL Query to Get Total Revenue Generated
+                //Aggregate Function in SQL
+                $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
+                //Select the database.
+                mysqli_select_db($link, "printing") or die(mysqli_error($link));
+
+                $query = "SELECT SUM(CommisionTotal) AS Total FROM commision";
+
+                //Execute the Query
+                $rs = mysqli_query($link, $query);
+                //Get the VAlue
+                $row = mysqli_fetch_assoc($rs);
+                $sum = $row['Total'];
+
+                ?>
+
+                <h1>RM<?php echo $sum; ?></h1>
+                <br />
+                Total Commision
+            </div>
 
             <div class="clearfix"></div>
         </div>
     </div>
 </body>
+
 
 </html>

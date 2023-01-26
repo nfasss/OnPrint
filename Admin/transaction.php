@@ -121,5 +121,5 @@
 </body>
 
 </html>
-</br><br><br><br><br><br><br><br><br>
+</br><br><br><br>
 <?php include('D:\Xampp\htdocs\OnPrint\Admin\inc\footer.php'); ?>

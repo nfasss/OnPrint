@@ -287,10 +287,10 @@ if ($count > 0) {
                 </div>
                 <hr>
                 <div class="container">
-                    <b>Total Payment </b>
-                    <br>
+                    <b>Total Payment: </b>
+                    <br><br>
                     <b>Please scan this QR code to give feedback!</b>
-                    <br>
+                    <br><br>
                     <img src="..\Asset\chart.png">
                 </div>
                 <hr>

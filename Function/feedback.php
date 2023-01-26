@@ -142,7 +142,7 @@ if ($count > 0) {
             <!-- Radio Buttons for Rating-->
             <div class="form-check mb-4">
                 <?php if ($Feedback == "Very Good") {
-                    echo "selected"; }?><input name='option' type='radio' value='Very Good'>
+                    echo "selected"; }?><br><input name='option' type='radio' value='Very Good'>
                     <label class="ml-3">Very good</label>
             </div>
             <div class="form-check mb-4">
