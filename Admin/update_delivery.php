@@ -11,111 +11,102 @@
 </head>
 
 <body>
-    <?php
-    $mysql = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
-    mysqli_select_db($mysql, "printing") or die(mysqli_error($mysql));
+<?php
+include 'D:\Xampp\htdocs\Donation\DonationWebsite\Admin\inc\header.php';
 
-    $DeliveryID = $_GET['id'];
-    $query = "SELECT * FROM delivery WHERE DeliveryID='$DeliveryID'";
-    $rs = mysqli_query($mysql, $query) or die(mysqli_error($mysql));
+($mysql = mysqli_connect('localhost', 'root', '', 'donationwebsite')) or
+    die(mysqli_connect_error());
 
+$DonationID = $_GET['id'];
+$query = 'SELECT * FROM donation WHERE DonationID=?';
+$stmt = mysqli_prepare($mysql, $query);
+mysqli_stmt_bind_param($stmt, 's', $DonationID);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
-    //Detail Availble
-    $row = mysqli_fetch_assoc($rs);
-    $DeliveryDate = $row['DeliveryDate'];
-    $DeliveryAddress = $row['DeliveryAddress'];
-    $DeliveryStatus = $row['DeliveryStatus'];
+$row = mysqli_fetch_assoc($result);
+$date = $row['date'];
+$name = $row['name'];
+$age = $row['age'];
+$contact = $row['contact'];
+$address = $row['address'];
 
+if (isset($_POST['submit'])) {
+    extract($_POST);
+    $query =
+        'UPDATE donation SET name=?, age=?, contact=?, address=? WHERE DonationID=?';
+    $stmt = mysqli_prepare($mysql, $query);
+    mysqli_stmt_bind_param(
+        $stmt,
+        'sssss',
+        $name,
+        $age,
+        $contact,
+        $address,
+        $id
+    );
+    mysqli_stmt_execute($stmt);
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        header('Location: manage_donation.php');
+        exit();
+    } else {
+        echo 'Error: ' . mysqli_stmt_error($stmt);
+    }
+}
+?>
 
-    ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation System</title>
+    <link rel="stylesheet" href="inc/admin.css">
+</head>
+<body>
     <div class="main-content">
         <div class="wrapper">
-            <h1>Update Delivery</h1>
+            <h1>Update Donation</h1>
             <br><br>
-
-
-
-            <form action="update_delivery.php" method="POST">
-
+            <form action="update_donation.php" method="POST">
                 <table class="tbl-30">
                     <tr>
-                        <td>Delivery ID </td>
-                        <td><b>#<?php echo $DeliveryID; ?></b></td>
+                        <td>Donation ID</td>
+                        <td><b>#<?php echo $DonationID; ?></b></td>
                     </tr>
                     <tr>
-                        <td>Delivery Date </td>
-                        <td><b> <?php echo $DeliveryDate; ?> </b></td>
+                        <td>Donation Date</td>
+                        <td><b><?php echo $date; ?></b></td>
                     </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td><textarea name="name" cols="100" rows="4"><?php echo $name; ?></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Age
 
-                    <tr>
-                        <td>Status</td>
-                        <td>
-                            <select name="DeliveryStatus">
-                                <option <?php if ($DeliveryStatus == "Ordered") {
-                                            echo "selected";
-                                        } ?> value="Ordered">Ordered</option>
-                                <option <?php if ($DeliveryStatus == "Picked up") {
-                                            echo "selected";
-                                        } ?> value="Picked up">Picked up</option>
-                                <option <?php if ($DeliveryStatus == "On delivery") {
-                                            echo "selected";
-                                        } ?> value="On delivery">On delivery</option>
-                                <option <?php if ($DeliveryStatus == "Delivered") {
-                                            echo "selected";
-                                        } ?> value="Delivered">Delivered</option>
-                            </select>
-                        </td>
+</td>
+                        <td><input type="number" name="age" value="<?php echo $age; ?>"></td>
                     </tr>
                     <tr>
-                        <td>Customer Address: </td>
-                        <td>
-                            <textarea name="DeliveryAddress" cols="100" rows="4"><?php echo $DeliveryAddress; ?></textarea>
-                        </td>
+                        <td>Contact</td>
+                        <td><input type="text" name="contact" value="<?php echo $contact; ?>"></td>
                     </tr>
-
-
                     <tr>
-                        <td clospan="2">
-                            <input type="hidden" name="id" value="<?php echo $DeliveryID; ?>">
-                            <input type="submit" name="submit" value="Update Delivery" class="btn-secondary">
-                        </td>
+                        <td>Address</td>
+                        <td><textarea name="address" cols="100" rows="4"><?php echo $address; ?></textarea></td>
                     </tr>
                 </table>
-
+                <br>
+                <input type="hidden" name="id" value="<?php echo $DonationID; ?>">
+                <input type="submit" name="submit" value="Update Donation">
             </form>
-
-
-            <?php
-            //CHeck whether Update Button is Clicked or Not
-            if (isset($_POST['submit'])) {
-                //echo "Clicked";
-                //Get All the Values from Form
-                $DeliveryID = $row['DeliveryID'];
-                $DeliveryDate = $row['DeliveryDate'];
-                $DeliveryAddress = $row['DeliveryAddress'];
-                $DeliveryStatus = $row['DeliveryStatus'];
-
-                extract($_POST);
-                $query = "UPDATE delivery SET DeliveryAddress = '$DeliveryAddress',
-                 DeliveryStatus = '$DeliveryStatus'
-                 WHERE DeliveryID = '$id'";
-                $rs = mysqli_query($mysql, $query) or die(mysqli_error($mysql));
-
-                if ($rs) {
-                    echo "<script type='text/javascript'>
-                        window.location='manage_delivery.php'
-                         </script>";
-                } else {
-                    echo "error: " . $query . "<br>" . mysqli_error($mysql);
-                }
-            }
-            ?>
-
-
         </div>
     </div>
 </body>
+</html>
+
 
 </html>
 </br><br><br><br><br><br><br><br><br>
