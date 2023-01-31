@@ -328,13 +328,12 @@ mysqli_select_db($link, "group2") or die(mysqli_error($link));
                 <tr>
                     <td>User Address:</td>
                     <td>
-                        <textarea name="UserAddress"><?php
-                                                        echo $address; ?></textarea>
+                        <input id="ADDRESS" name="UserAddress" value="<?php echo $address; ?>">
                     </td>
                 </tr>
                 <br><br>
                 <input type="submit" name="btn1" value="Update" style="padding: 10px 50px;">
-                <input type="submit" name="btn2" value="Back" style="padding: 10px 50px;"onclick=" location.href='Profile_manage.php'">
+                <input type="submit" name="btn2" value="Back" style="padding: 10px 50px;" onclick=" location.href='Profile_manage.php'">
 
             </form>
             <?php
@@ -344,19 +343,14 @@ mysqli_select_db($link, "group2") or die(mysqli_error($link));
                 $phoneNum = $_POST["UserPhoneNum"];
                 $address = $_POST["UserAddress"];
                 $type = $_POST["UserType"];
-			
-			echo $UserID;
-			echo $phoneNum;
-			echo $address;
-			echo $type;
-
+	
                 extract($_POST);
                 $query = "UPDATE user SET UserPhoneNum = '".$phoneNum."' , UserAddress = '".$address."', UserType = '".$type."' WHERE UserID = '".$UserID."'";
 
                 $result = mysqli_query($link, $query);
                 if ($result) {
-                    echo '<script> document.getElementById("UserPhoneNum").innerHTML =(".<?php echo $phoneNum;?>.");</script>';
-                    echo '<script>document.forms[myForm]["UserAddress"].value = (".<?php echo $address;?>.");</script>';
+                    echo '<script> document.getElementById("UserPhoneNum").innerHTML =("'.$phoneNum.'");</script>';
+                    echo '<script>document.getElementById("ADDRESS").value ="'. $address.'";</script>';
                     
                 } else {
                     echo "Data Not Updated!";
