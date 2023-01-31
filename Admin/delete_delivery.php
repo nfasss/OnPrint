@@ -2,7 +2,7 @@
 
     // to make a connection with database
     $mysql = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
-    mysqli_select_db($mysql, "donationwebsite") or die(mysqli_error($mysql));
+    mysqli_select_db($mysql, "printing") or die(mysqli_error($mysql));
 
     // 1. get the ID of Delivery to be deleted
     $DeliveryID = $_GET['id'];
