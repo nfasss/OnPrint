@@ -1,3 +1,9 @@
+<?php
+
+	session_start();
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -10,9 +16,9 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<link rel="stylesheet" href="lstyle2.css" />
+		<link rel="stylesheet" href="Style/style.css" />
 		
-		<title>OnPrint Confirmation Page</title>
+		<title>OnPrint Receipt Page</title>
 	
 	</header>
 	
@@ -90,6 +96,8 @@
 			<br><br><label>Order ID</label><br><br>
 			
 			<br><br><label>Delivery Address</label><br><br>
+
+			<br><br><label>QR Code</label><br><br>
 			
 		</div>
 			
@@ -105,6 +113,8 @@
 				
 			<br><br><label>:</label><br><br>
 			
+			<br><br><label>:</label><br><br>
+
 			<br><br><label>:</label><br><br>
 			
 		</div>
@@ -136,6 +146,8 @@
 				echo "<br><br><br><br>";
 						
 				echo $deliveryAddress;
+
+				echo "<br><br><br><br>";
 			
 			?>
 			

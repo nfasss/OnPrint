@@ -1,3 +1,9 @@
+<?php
+
+	session_start();
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -10,7 +16,7 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<link rel="stylesheet" href="style2.css" />
+		<link rel="stylesheet" href="Style/style.css" />
 		
 		<title>OnPrint Update Payment Page</title>
 	
@@ -93,8 +99,18 @@
 			</div>
 			
 			<div class="contentright">
+				
+				<?php
+					
+					echo "<br>";
+					
+					echo $row['PaymentID'];
+
+					echo "<br>";
+
+				?>
 			
-				<input type ="text" name="paymentID" maxlength="10" class="inputbox" value="<?php echo $row['PaymentID'];?>" disabled><br><br>
+				<input type ="hidden" name="paymentID" maxlength="10" class="inputbox" value="<?php echo $row['PaymentID'];?>"><br><br>	
 			
 				<input type ="text" name="paymentTotal" maxlength="50" class="inputbox" value="<?php echo $row['PaymentTotal'];?>" placeholder="Please Input Payment Total"><br><br>
 			
@@ -106,10 +122,30 @@
 				</select>
 				
 				<br><br>
-			
-				<input type ="text" name="userID" maxlength="10" class="inputbox" value="<?php echo $row['UserID'];?>" disabled><br><br>
-			
-				<input type ="text" name="orderID" maxlength="10" class="inputbox" value="<?php echo $row['OrderID'];?>" disabled><br><br>
+
+				<?php
+					
+					echo "<br>";	
+					
+					echo $row['UserID'];
+
+					echo "<br>";
+
+				?>
+
+				<input type ="hidden" name="userID" maxlength="10" class="inputbox" value="<?php echo $row['UserID'];?>"><br><br>
+
+				<?php
+					
+					echo "<br>";
+					
+					echo $row['OrderID'];
+
+					echo "<br>";
+
+				?>
+
+				<input type ="hidden" name="orderID" maxlength="10" class="inputbox" value="<?php echo $row['OrderID'];?>"><br><br>
 				
 				<input type ="text" name="deliveryAddress" maxlength="100" class="inputbox" value="<?php echo $row['DeliveryAddress'];?>" placeholder="Please Input Delivery Address"><br><br>
 				

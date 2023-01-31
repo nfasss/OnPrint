@@ -39,7 +39,7 @@ function showUserList()
                     <td><?php echo $UserState ?></td>
                     <td><?php echo $UserPoscode ?></td>
                     <td><?php echo $UserType ?></td>
-                    <td> <a href="delete_mysql.php?id=<?php echo $UserID; ?>">Delete </a> / <a href="updateUser_mysql.php?id=<?php echo $UserID; ?>">Edit </a></td>
+                    <td> <a href="delete_mysql.php?UserID=<?php echo$UserID; ?>">Delete </a> / <a href="updateUser.php?UserID=<?php echo$UserID; ?>">Edit </a></td>
                 </tr>
             </table>
 
@@ -79,10 +79,3 @@ function showUserList()
         color: white;
     }
 </style>
-<!--function total_num_users(){
-$query ="SELECT * FROM user WHERE UserType;
-$result=mysqli_query($link,$query);
-$count = mysqli_num_rows($result);
-return $count;
-}
-}-->

@@ -266,7 +266,7 @@ mysqli_select_db($link, "group2") or die(mysqli_error($link));
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
                     <li><a href="#courses">Order</a></li>
-                    <li><a href="#tutors">Our Profile</a></li>
+                    <li><a href="Profile_manage.php">Our Profile</a></li>
                     <li><a href="#partners">Contact</a></li>
                     <li><a href="Login.php" class="btn-login">Sign Up</a></li>
                 </ul>
@@ -279,69 +279,88 @@ mysqli_select_db($link, "group2") or die(mysqli_error($link));
 <body>
     <div class="title">
         <h2>User Info Change</h2>
-
+        <?php
+            $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
+            mysqli_select_db($link, "group2") or die(mysqli_error($link));
+            $UserID = $_GET['UserID'];
+            $query = "SELECT * FROM user WHERE UserID='$UserID'";
+            $result = mysqli_query($link, $query) or die(mysqli_error($link));
+        
+        
+            //Detail Availble
+            $UserData = mysqli_fetch_assoc($result);
+            $UserID = $UserData['UserID'];
+            $phoneNum = $UserData['UserPhoneNum'];
+            $type = $UserData['UserType'];
+            $address = $UserData['UserAddress'];
+        
+            ?>
         <div class="container_L">
-            <form class="myForm" action="_mysql.php" method="post">
-                <tr>
-                    <td>User ID</td>
-                    <td><b>#<?php echo $UserID; ?></b></td>
+            <form class="myForm"  method="post">
+            <tr>  
+                    <td>User ID:</td>
+                    <td><b><?php echo $UserID; ?></b></td>
                 </tr>
+                <br><br>
                 <tr>
-                    <td>Phone Num</td>
-                    <td><b><?php echo $UserPhoneNum; ?></b></td>
+                    <td>Phone Num:</td>
+                    <td><b><?php echo $phoneNum; ?></b></td>
                 </tr>
+                <br><br>
                 <tr>
-                    <td>User Type</td>
+                    <td>User Type:</td>
                     <td>
-                    <select name="UserType">
-                    <option <?php if($UserType =="staff"){
-                        echo "selected";
-                    }?>value="staff">Staff</option>
-                    <option <?php if($UserType =="student"){
-                        echo "selected";
-                    }?>value="student">Student</option>
-                    <option <?php if($UserTypev =="administrator"){
-                        echo "selected";
-                    }?>value="administrator">Administrator</option>
+                        <select name="UserType">
+                            <option <?php if ($type == "staff") {
+                                        echo "selected";
+                                    } ?>value="staff">Staff</option>
+                            <option <?php if ($type == "student") {
+                                        echo "selected";
+                                    } ?>value="student">Student</option>
+                            <option <?php if ($type == "administrator") {
+                                        echo "selected";
+                                    } ?>value="administrator">Administrator</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <br><br>
+                <tr>
+                    <td>User Address:</td>
+                    <td>
+                        <input id="ADDRESS" name="UserAddress" value="<?php echo $address; ?>">
+                    </td>
+                </tr>
+                <br><br>
+                <input type="submit" name="btn1" value="Update" style="padding: 10px 50px;">
+                <input type="submit" name="btn2" value="Back" style="padding: 10px 50px;" onclick=" location.href='Profile_manage.php'">
+
+            </form>
+            <?php
+            //CHECK Update Button is
+            if (isset($_POST['btn1'])) {
+                $UserID = $_GET["UserID"];
+                $phoneNum = $_POST["UserPhoneNum"];
+                $address = $_POST["UserAddress"];
+                $type = $_POST["UserType"];
+	
+                extract($_POST);
+                $query = "UPDATE user SET UserPhoneNum = '".$phoneNum."' , UserAddress = '".$address."', UserType = '".$type."' WHERE UserID = '".$UserID."'";
+
+                $result = mysqli_query($link, $query);
+                if ($result) {
+                    echo '<script> document.getElementById("UserPhoneNum").innerHTML =("'.$phoneNum.'");</script>';
+                    echo '<script>document.getElementById("ADDRESS").value ="'. $address.'";</script>';
                     
-                </select>
-                </td>
-                </tr>
-                <tr>
-                    <td>User Address</td>
-                    <td>
-                        <textarea name="UserAddress"><?php
-                        echo $UserAddress;?></textarea>
-                        </td>
-                </tr>
+                } else {
+                    echo "Data Not Updated!";
+                }
+    
+            }
+            
+            ?>
+            
+        </div>
+    </div>
 
-                <input type="submit" name="btn1"value="Update" style="padding: 10px 50px;">
-                <input type="back" name="btn2"value="Back"style="padding: 10px 50px;">
-
-</form>
-<?php
-//CHECK Update Button is
-if (isset($_POST['submit'])){
-    $UserID = $UserData["UserID"];
-    $UserPhoneNum = $UserData["UserPhoneNum"];
-    $UserAddress = $UserData["UserAddress"];
-    $UserType = $UserData["UserType"];
-
-    extract($_POST);
-    $query = "UPDATE user SET UserAddress = '$UserAddress',
-    UserType = '$UserType'
-    WHERE UserID = '$UserID'";
-
-    $result = mysqli_query($link,$query) or die(mysqli_error($mysqli));
-}
-if ($result) {
-    echo "<script type='text/javascript'>
-    window.location='Profile_manage.php'
-    </script>";
-} else {
-    echo "error: " . $query . "<br>" . mysqli_error($link);
-}
-?> 
-</div>
-</div>
 </html>

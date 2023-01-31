@@ -1,5 +1,11 @@
 <?php
 
+	session_start();
+
+?>
+
+<?php
+
 	$conn = mysqli_connect("localhost", "root", "", "Project");
 	
 	$paymentID = $_POST['paymentID'];
@@ -9,7 +15,8 @@
 	$orderID = $_POST['orderID'];
 	$deliveryAddress = $_POST['deliveryAddress'];
 	
-	$query = "UPDATE Payment SET PaymentTotal='$_POST[paymentTotal]', PaymentMethod='$_POST[paymentMethod]', DeliveryAddress='$_POST[deliveryAddress]'";
+	$query = "UPDATE Payment SET PaymentTotal='$_POST[paymentTotal]', PaymentMethod='$_POST[paymentMethod]', DeliveryAddress='$_POST[deliveryAddress]' 
+	WHERE PaymentID='$_POST[paymentID]'";
 
 	$run = mysqli_query($conn, $query) or die(mysqli_error());
 
