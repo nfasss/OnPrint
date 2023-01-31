@@ -53,6 +53,78 @@
 		</nav>
 		
 		<br><br><br>
+
+		<form method="post">
+
+			<Label>Seacrh : </Label>
+
+			<input type="text" name="search" placeholder="Enter Payment ID To Search">
+			<input type="submit" name="submit" value="SEARCH">
+
+		</form>
+
+		<?php
+
+			$conn = new PDO("mysql:host=localhost;dbname=project",'root','');
+			
+			if (isset($_POST["submit"]))
+			{
+
+				$str = $_POST["search"];
+				$sth = $conn->prepare("SELECT * FROM `payment` WHERE PaymentID = '$str'");
+
+				$sth -> setFetchMode(PDO:: FETCH_OBJ);
+				$sth -> execute();
+
+				if ($row = $sth->fetch())
+				{
+
+					?>
+
+					<br><br><br>
+
+					<table>
+
+						<tr>
+
+							<th>Payment ID : </th>
+							<th>Payment Total : </th>
+							<th>Payment Method : </th>
+							<th>User ID : </th>
+							<th>Order ID : </th>
+							<th>Delivery Address : </th>
+
+						</tr>
+
+						<tr>
+
+							<td><?php echo $row->PaymentID; ?></td>
+							<td><?php echo $row->PaymentTotal; ?></td>
+							<td><?php echo $row->PaymentMethod; ?></td>
+							<td><?php echo $row->UserID; ?></td>
+							<td><?php echo $row->OrderID; ?></td>
+							<td><?php echo $row->DeliveryAddress; ?></td>
+
+						</tr>
+
+					</table>
+
+				<?php
+				
+				}
+
+				else
+				{
+
+					echo "Payment ID Does Not Exist";
+
+				}
+
+			}
+
+		?>
+
+		<br><br><br>
 		
 		<table>
 		

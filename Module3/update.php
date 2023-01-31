@@ -111,8 +111,18 @@
 				?>
 			
 				<input type ="hidden" name="paymentID" maxlength="10" class="inputbox" value="<?php echo $row['PaymentID'];?>"><br><br>	
+
+				<?php
+					
+					echo "<br>";
+					
+					echo $row['PaymentTotal'];
+
+					echo "<br>";
+
+				?>
 			
-				<input type ="text" name="paymentTotal" maxlength="50" class="inputbox" value="<?php echo $row['PaymentTotal'];?>" placeholder="Please Input Payment Total"><br><br>
+				<input type ="hidden" name="paymentTotal" maxlength="50" class="inputbox" value="<?php echo $row['PaymentTotal'];?>"><br><br>
 			
 				<select name="paymentMethod" id="paymentMethod" class="inputbox" style="width: 103%"  value="<?php echo $row['PaymentMethod'];?>">
 				
@@ -158,6 +168,56 @@
 			</div>
 		
 		</form>
+
+		<div class="contentright">
+
+			<table>
+		
+				<tr>
+			
+					<th>Product Name</th>
+				
+					<th>Product Price (RM)</th>
+
+					<th>Order Amount (RM)</th>
+			
+				</tr>
+
+				<?php
+
+					$conn = mysqli_connect("localhost", "root", "", "Project") or die(mysqli_error());
+
+					$query = "SELECT * FROM `order` INNER JOIN `product` ON `order`.`ProductID` = `product`.`ProductID` WHERE `order`.`OrderListID` = 'OL001'";
+
+					$run = mysqli_query($conn, $query);
+					
+					if (mysqli_num_rows($run) > 0)
+					{
+
+						while ($listData = mysqli_fetch_assoc($run))
+						{
+
+							echo "
+			
+								<tr>
+			
+									<td>$listData[ProductName]</td>
+									<td>$listData[ProductPrice]</td>
+									<td>$listData[OrderAmount]</td>
+			
+								</tr>
+			
+							";	
+					
+						}
+
+					}
+
+				?>
+		
+			</table>
+
+		</div>
 		
 	</body>
 	

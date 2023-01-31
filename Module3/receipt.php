@@ -148,6 +148,8 @@
 				echo $deliveryAddress;
 
 				echo "<br><br><br><br>";
+
+				echo "<img src='Asset/qr.png' alt='QR Code'style='width: 100px; height: 100px;'>";
 			
 			?>
 			
