@@ -1,0 +1,382 @@
+*
+{
+	
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+	
+}
+
+body
+{
+	
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Open Sans',sans-serif;
+	
+}
+
+nav
+{
+	
+    width: 100%;
+    margin: auto;
+    display: flex;
+    line-height: 80px;
+    position: sticky;
+    position: -webkit-sticky; 
+    top: 0;
+    background: #FFDE59;
+    z-index: 1;
+    border-bottom:1px solid #364f6b;
+	
+}
+
+nav ul
+{
+	
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	
+}
+
+nav ul li
+{
+	
+    float: left;
+	
+}
+
+nav ul li a
+{
+	
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px 16px 0px 16px;
+    text-decoration: none;
+	
+}
+
+nav ul li a:hover
+{
+	
+    text-decoration: underline;
+	
+}
+
+.wrapper
+{
+	
+    width: 1100px;
+    margin: auto;
+    position: relative;
+	
+}
+
+.logo a
+{
+	
+    font-size: 50px;
+    font-weight: 800;
+    float: left;
+    font-family: serif;
+    color: #364f6b;
+	
+}
+
+.menu
+{
+	
+    float: right;
+	
+}
+
+a.btn-login
+{
+	
+    background: #3f72af;
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 15px 20px 15px 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+	
+}
+
+a.btn-login:hover
+{
+	
+    background: #fc5185;
+    text-decoration: none;
+	
+}
+
+section
+{
+	
+    margin: auto;
+    display: flex;
+    margin-bottom: 50px;
+	
+}
+
+.home-header
+{
+	
+    background-image: url("Asset/umplawo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10% 0;
+    margin-bottom: 0;
+	
+}
+
+.container
+{
+	
+    width: 80%;
+    margin: 0 auto;
+    padding: 1%;
+	
+}
+
+.menu1
+{
+	
+	background-color: #023579;
+
+}
+
+.tengah
+{
+	
+    text-align: center;
+    width: 100%;
+	
+}
+
+.tutor-list
+{
+	
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+	
+}
+
+.menu-list
+{
+	
+    width: 20%;
+    margin: 0 auto;
+	
+}
+
+.menu-list img
+{
+	
+    width: 70%;
+	
+}
+
+.menu-list p
+{
+	
+    font-family: 'sans serif';
+    font-weight: 800;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+	
+}
+
+div.contentleft
+{
+	
+	margin-top: 20px;
+	margin-left: 10px;
+	width: 10%;
+	float: left;
+	font-weight: bold;
+	
+}
+
+div.contentmid
+{
+	
+	margin-top: 20px;
+	width: 5%;
+	float: left;
+	font-weight: bold;
+	
+}
+
+div.contentright
+{
+	
+	margin-top: 20px;
+	width: 75%;
+	float: left;
+	font-weight: bold;
+	padding-bottom: 70px;
+	
+}
+
+.inputbox
+{
+	
+	border: 1px solid black;
+	background-color: white;
+	color: black;
+	text-align: left;
+	padding: 20px 20px;
+	width: 100%;
+	
+}
+
+.button
+{
+	
+	background-color: #81bd67;
+	color: black;
+	border: none;
+	border-radius: 25px;
+	padding: 15px 32px;
+	text-align: center;
+	font-size: 16px;
+	margin-left: auto;
+	margin-right: auto;
+	cursor: pointer;
+	position: absolute;
+	left: 45%;
+	
+}
+
+.buttonhistory
+{
+	
+	background-color: #81bd67;
+	color: black;
+	border: none;
+	border-radius: 25px;
+	padding: 15px 32px;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+	margin-left: 10px;
+	
+}
+
+table, th, td
+{
+	
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-left: 70px;
+	text-align: center;
+	
+}
+
+th, td
+{
+	
+	width: 250px;
+	height: 50px;
+	
+}
+
+.noborder
+{
+	
+	border: none;
+	
+}
+
+#footer
+{
+	
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 30px 0px 30px 0px;
+    margin-top: 0px;
+    background: #00ADB4
+	
+}
+
+@media screen and (max-width: 991.98px)
+{
+	
+    .wrapper
+	{
+		
+        width: 90%;
+		
+    }
+
+    .logo a
+	{
+		
+        display: block;
+        width: 100%;
+        text-align: center;
+		
+    }
+
+    nav .menu
+	{
+		
+        width: 100%;
+        margin: 0;
+		
+    }
+
+    nav .menu ul
+	{
+		
+        text-align: center;
+        margin: auto;
+        line-height: 60px;
+		
+    }
+
+    nav .menu ul li
+	{
+		
+        display: inline-block;
+        float: none;
+		
+    }
+	
+	section
+	{
+		
+        display: block;
+		
+    }
+
+    section img
+	{
+		
+        display: block;
+        width: 100%;
+        height: auto;
+		
+    }
+
+    .menu-list
+	{
+		
+        width: 50%;
+		
+    }
+	
+}
