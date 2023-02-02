@@ -73,7 +73,7 @@ $selected = $_SESSION['UserType'];
     <div class="container_L">
         <canvas id="myChart" style="width:200%;max-width:600px"></canvas>
         <script>
-            var xValues = ["Student", "Staff", "Administrator"];
+            var xValues = ["Staff", "Student", "Administrator"];
             var yValues = [0, 0, 0];
 
             <?php
