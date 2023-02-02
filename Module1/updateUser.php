@@ -349,7 +349,8 @@ mysqli_select_db($link, "group2") or die(mysqli_error($link));
 
                 $result = mysqli_query($link, $query);
                 if ($result) {
-                    echo '<script> document.getElementById("UserPhoneNum").innerHTML =("'.$phoneNum.'");</script>';
+                    echo '<script>document.getElementById("UserPhoneNum").innerHTML =("'.$phoneNum.'");</script>';
+                    echo '<script>document.getElementById("UserType").options=("'.$type.'");</script>';
                     echo '<script>document.getElementById("ADDRESS").value ="'. $address.'";</script>';
                     
                 } else {
