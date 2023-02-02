@@ -1,4 +1,9 @@
+
  <!DOCTYPE html>
+
+ <?php session_start();
+ 
+ ?>
  <html lang="en">
  <head>
      <meta charset="UTF-8">
@@ -14,9 +19,9 @@
              <div class="menu">
                  <ul>
                      <li><a href="homepage.php">Home</a></li>
-                     <li><a href="#order">Order</a></li>
+                     <li><a href="order.php">Order</a></li>
                      <li><a href="Profile_manage.php">Our Profile</a></li>
-                     <li><a href="#contact">Contact</a></li>
+                     <li><a href="aboutus.php">About Us</a></li>
                      <li><a href="Login.php" class="btn-login">Sign Up</a></li>
                  </ul>
              </div>
