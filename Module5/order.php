@@ -185,6 +185,15 @@ form.example::after {
   clear: both;
   display: table;
 }
+h3{
+	text-align: left;
+	font-size: x-large;
+	font-style: italic;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+	text-decoration: underline;
+  margin-top: -30px;
+  margin-left: 170px;
+}
 </style>
 
 </head>
@@ -195,11 +204,11 @@ form.example::after {
 <div class="navbar">
   <b href="#"></b>
   <a href="login.php"></i><strong> Logout</strong></a>
-  <a href="contact.php"><strong>Inventory</strong></a>
-  <a href="contact.php"><strong>Commission</strong></a>
-  <a class="active" href="about.php"><strong>Order</strong></a>
-  <a href="access.php"><strong>User</strong></a>
-  <a href="pta.php"><strong>Home</strong></a>
+  <a href="inventory.php"><strong>Inventory</strong></a>
+  <a href="commission.php"><strong>Commission</strong></a>
+  <a class="active" href="printorder.php"><strong>Order</strong></a>
+  <a href="user.php"><strong>User</strong></a>
+  <a href="home.php"><strong>Home</strong></a>
 </div>
 </div>
 
@@ -208,6 +217,8 @@ form.example::after {
 <form class="example" action="order.php" method="POST" style="margin-top: 60px;">
   <button type="submit" name="cari"><i class="fa fa-search"></i></button>
   <input type="text" placeholder="Search by Order ID" name="search" class='form-control' value=""></form>
+
+  <h3>Printing Order Report</h3>
 
 <div class="table1" style="margin-top: 30px;">
 

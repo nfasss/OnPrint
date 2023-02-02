@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -310,11 +309,11 @@ function myFunction2(){
   <div class="navbar">
   <b href="#"></b>
   <a href="login.php"><strong>Logout</strong></a>
-  <a class="active" href="contact.php"><strong>Inventory</strong></a>
+  <a class="active" href="inventory.php"><strong>Inventory</strong></a>
   <a href="commission.php"><strong>Commission</strong></a>
-  <a href="about.php"><strong>Order</strong></a>
-  <a href="access.php"><strong>User</strong></a>
-  <a href="pta.php"><strong>Home</strong></a>
+  <a href="printorder.php"><strong>Order</strong></a>
+  <a href="user.php"><strong>User</strong></a>
+  <a href="home.php"><strong>Home</strong></a>
 </div>
 
 </div>

@@ -25,6 +25,6 @@ $query = "UPDATE inventory SET InventoryInDate = '$inDate', InventoryOutDate = '
 
 $result = mysqli_query($conn,$query) or die ("Could not execute query in update.php");
 if($result){
-	echo "<script type = 'text/javascript'> window.location='contact.php' </script>";
+	echo "<script type = 'text/javascript'> window.location='inventory.php' </script>";
 }
 ?>

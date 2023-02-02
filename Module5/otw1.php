@@ -25,6 +25,6 @@ $query = "UPDATE user SET  UserPhoneNum = '$contact', UserAddress = '$address', 
 
 $result = mysqli_query($conn,$query) or die ("Could not execute query in update1.php");
 if($result){
-	echo "<script type = 'text/javascript'> window.location='access.php' </script>";
+	echo "<script type = 'text/javascript'> window.location='user.php' </script>";
 }
 ?>

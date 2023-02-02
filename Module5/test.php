@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
 $query = " INSERT INTO inventory (InventoryID, InventoryInDate, InventoryOutDate, InventoryQuantity, OutletID, ProductID ) VALUES ('$id', '$inDate', '$outDate', '$quantity', '$outletID', '$productID')";
 
 if (mysqli_query($conn, $query)) {
-	echo "<script type='text/javascript'> window.location='contact.php' </script>";
+	echo "<script type='text/javascript'> window.location='inventory.php' </script>";
 } else {
 	echo "Error: " . $query . "<br>" . mysqli_error($conn);
 }

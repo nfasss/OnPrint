@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="font-awesome.min.css">
 <script src="2b5c6a6569.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -117,10 +119,19 @@ h1{
 	color: black;
 }
 
+canvas{
+        display: inline-block;
+        position: relative;
+        max-width: 800px;
+        max-height: 400px;
+        margin-left: 200px;
+		margin-bottom: 100px;
+		margin-top: -20px;
+}
 </style></head><body>
-		<div class="auto-style1" style="width: 96%">
+<div class="auto-style1" style="width: 96%">
 			<label id="Label1">&nbsp;</label>
-			<table style="width: 96%; margin-top: 100px; margin-bottom: 50px" align="center">
+			<table style="width: 96%; margin-top: 100px;" align="center">
 				<tr>
 					<td style="width: 20%; height: 62px;" class="auto-style7">
 					</td>
@@ -141,72 +152,100 @@ h1{
 					<td style="width: 20%; height: 50px;">
 					</td>
 				</tr>
-				<tr>
-					<td style="width: 20%; height: 383px;" class="auto-style3">
-					</td>
-					<td style="width: 30%; height: 383px;" class="auto-style7">
-					<img alt=""  style="width: 450px; height: 330px">&nbsp;</td>
-					<td style="width: 30%; height: 383px;" class="auto-style7">
-					<img alt="" src="" style="width: 300px; height: 230px">&nbsp;</td>
-					<td style="width: 20%; height: 383px;" class="auto-style3">
-					</td>
-				</tr>
-				<tr>
-					<td style="width: 20%; height: 27px;" class="auto-style3"></td>
-					<td style="width: 20%; height: 27px;" class="auto-style7"> </td>
-					<td style="width: 20%; height: 27px" class="auto-style7"> 
-					<!--<form action="access.php" method="post">
-						<input name="Button1" style="width: 170px; height: 36px;" type="submit" value="MORE"></form>-->
-					</td>
-					<td style="width: 20%; height: 27px"> </td>
-					<td style="width: 20%; height: 27px"> </td>
-				</tr>
-				<tr>
-					<td style="width: 20%; height: 27px;" class="auto-style3">&nbsp;</td>
-					<td style="width: 20%; height: 27px;" class="auto-style5"> 
-					&nbsp;</td>
-					<td style="width: 20%; height: 27px" class="auto-style7"> &nbsp;</td>
-					<td style="width: 20%; height: 27px" class="auto-style7"> &nbsp;</td>
-					<td style="width: 20%; height: 27px" class="auto-style3"> &nbsp;</td>
-				</tr>
-				<tr>
-				<td style="width: 20%; height: 383px;" class="auto-style3">
-					</td>
-					<td style="width: 30%; height: 383px;" class="auto-style7">
-					<img alt="" src="" style="width: 440px; height: 330px">&nbsp;</td>
-					<td style="width: 30%; height: 383px;" class="auto-style7">
-					<img alt="" src="" style="width: 300px; height: 230px">&nbsp;</td>
-					<td style="width: 20%; height: 383px;" class="auto-style3">
-					</td>
-				</tr>
-				<tr>
-					<td style="width: 20%">&nbsp;</td>
-					<td style="width: 20%" class="auto-style7"> 
-					&nbsp;</td>
-					<td style="width: 20%" class="auto-style7"> 
-					<!--<form action="access.php" method="post">
-					<input name="Button2" style="width: 170px; height: 36px;" type="submit" value="MORE"></form></td>-->
-					<td style="width: 20%" class="auto-style7"> 
-					&nbsp;</td>
-					<td style="width: 20%"> &nbsp;</td>
-				</tr>
 				</table>
 			<br />
 			<br />
 			<br />
-		</div>
-		<div class="container">
+		</div>	
+<div class="container">
  <h1><img alt="" height="90" src="print.jpg" width="95"></h1>
   <div class="navbar">
   <b href="#"></b>
   <a href="login.php"><strong>Logout</strong></a>
-  <a href="contact.php"><strong>Inventory</strong></a>
+  <a href="inventory.php"><strong>Inventory</strong></a>
   <a href="commission.php"><strong>Commission</strong></a>
-  <a href="about.php"><strong>Order</strong></a>
-  <a href="access.php"><strong>User</strong></a>
-  <a class="active" href="pta.php"><strong>Home</strong></a>
+  <a href="printorder.php"><strong>Order</strong></a>
+  <a href="user.php"><strong>User</strong></a>
+  <a class="active" href="home.php"><strong>Home</strong></a>
 </div>
 
 </div>
+
+<?php 
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "printing";
+  
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $query = $conn->query("SELECT UserID as UserID, SUM(CommisionTotal) as CommisionTotal FROM commision GROUP BY UserID");
+  //$result = mysqli_query($conn,$query);
+
+  foreach($query as $data)
+  {
+    $commid[] = $data['UserID'];
+    $total[] = $data['CommisionTotal'];
+  }
+
+?>
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script>
+  // === include 'setup' then 'config' above ===
+  const labels = <?php echo json_encode($commid) ?>;
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Total commission for rider',
+      data: <?php echo json_encode($total) ?>,
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(201, 203, 207, 0.2)'
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)',
+        'rgb(54, 162, 235)',
+        'rgb(153, 102, 255)',
+        'rgb(201, 203, 207)'
+      ],
+      borderWidth: 1
+    }]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    },
+  };
+
+  var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+
 </body>
 </html>

@@ -1,9 +1,9 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+<script src="2b5c6a6569.js" crossorigin="anonymous"></script>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -108,30 +108,9 @@ h1{
   float: right;
 }	
 
- .auto-style1 {
-	font-size: 14px;
-}
-
- .auto-style2 {
+.auto-style2 {
 	text-align: center;
 }
-.auto-style3 {
-	font-size: xx-large;
-	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-.auto-style5 {
-	font-size: large;
-	color: black
-}
-
- .auto-style6 {
-	font-size: medium;
-	color: black;
-}
-.auto-style7 {
-	font-size: medium;
-}
-
 th, td{
 	border: 1px CadetBlue solid;
 }
@@ -209,41 +188,27 @@ h3{
   margin-top: -30px;
   margin-left: 170px;
 }
-button.btnadd{
-  width: 200px;
-  height: 36px;
-  color: white;
-  background-color: #5FB6AD;  
-  margin-left: 1160px;
-  margin-top: 20px;
-}
- </style>
- <script>
-  function myFunction2(){
-  alert("New Inventory Added");
-}
-</script>
- </head><body>
+</style></head><body>
 		
-		<div class="container">
-		<h1><img alt="" height="90" src="print.jpg" width="95"></h1>
+<div class="container">
+ <h1><img alt="" height="90" src="print.jpg" width="95"></h1>
   <div class="navbar">
   <b href="#"></b>
   <a href="login.php"></i><strong> Logout</strong></a>
-  <a class="active" href="contact.php"><strong>Inventory</strong></a>
+  <a href="inventory.php"><strong>Inventory</strong></a>
   <a href="commission.php"><strong>Commission</strong></a>
-  <a href="about.php"><strong>Order</strong></a>
-  <a href="access.php"><strong>User</strong></a>
-  <a href="pta.php"><strong>Home</strong></a>
+  <a href="printorder.php"><strong>Order</strong></a>
+  <a class="active" href="user.php"><strong>User</strong></a>
+  <a href="home.php"><strong>Home</strong></a>
 </div>
 
-</div>
+  </div>
 
-<form class="example" action="" method="POST" style="margin-top: 60px;">
+  <form class="example" action="list.php" method="POST" style="margin-top: 60px;">
   <button type="submit" name="cari"><i class="fa fa-search"></i></button>
-  <input type="text" placeholder="Search by inventory ID" name="search" class='form-control' value=""></form>
+  <input type="text" placeholder="Search by first name" name="search" class='form-control' value=""></form>
 
-  <h3>Inventory Report</h3>
+  <h3>User List Report</h3>
   <div class="table1" style="margin-top: 32px;">
 
 <?php
@@ -260,41 +225,49 @@ if ($conn->connect_error) {
 }
 
 
-$sql = mysqli_query($conn, " SELECT * FROM inventory ");
+$sql = mysqli_query($conn,"SELECT * FROM user");
 
 ?>      
 <table style="border: solid 1px darkSlateGray; width: 80%; height:30px; color: black; font-size:14px" align="center">
 <tr>
-    <th style="height: 35px">Inventory ID</th>
-		<th style="height: 35px">Date In</th>
-		<th style="height: 35px">Date Out</th>
-		<th style="height: 35px">Quantity</th>
-		<th style="height: 35px">Outlet ID</th>
-		<th style="height: 35px">Product ID</th>
-		<th style="height: 35px">Option</th>
-
+    <th style="height: 35px">User ID</th>
+		<th style="height: 35px">Password</th>
+		<th style="height: 35px">First Name</th>
+		<th style="height: 35px">Last Name</th>
+		<th style="height: 35px">Email</th>
+		<th style="height: 35px">Phone Number</th>
+    <th style="height: 35px">Address</th>
+		<th style="height: 35px">State</th>		
+    <th style="height: 35px">Poscode</th>
+    <th style="height: 35px">Action</th>
 </tr>
 <?php
 if (mysqli_num_rows($sql) > 0)
 {
 	while($row = mysqli_fetch_array($sql))
 	{
-	  $id=$row["InventoryID"];
-    $inDate=$row["InventoryInDate"];
-    $outDate=$row["InventoryOutDate"];
-    $quantity=$row["InventoryQuantity"];
-    $outletID=$row["OutletID"];
-    $productID=$row["ProductID"];
-
+	  $id=$row["UserID"];
+    $password=$row["UserPassword"];
+    $fname=$row["UserFirstName"];
+    $lname=$row["UserLastName"];
+    $email=$row["UserEmail"];
+    $contact=$row["UserPhoneNum"];
+    $address=$row["UserAddress"];
+    $state=$row["UserState"];
+    $poscode=$row["UserPoscode"];
   ?>
       <tr>
-        <td style="padding:10px" class="auto-style1"> <?php echo $row['InventoryID']?> </td>
-        <td style="padding:10px" class="auto-style1"> <?php echo $row['InventoryInDate']?> </td>
-        <td style="padding:10px" class="auto-style1"> <?php echo $row['InventoryOutDate']?> </td>
-        <td style="padding:10px" class="auto-style1"> <?php echo $row['InventoryQuantity']?> </td>
-        <td style="padding:10px" class="auto-style1"> <?php echo $row['OutletID']?> </td>
-        <td style="padding:10px" class="auto-style1"> <?php echo $row['ProductID']?> </td>
-		<td style="padding:10px" class="auto-style2"><a href="update.php?id=<?php echo $id; ?>">Update</a> / <a href="delete.php?id=<?php echo $id; ?>">Delete</a><br></td>
+        <td style="padding:10px" class="auto-style1"> <?php echo $id ?> </td>
+        <td style="padding:10px" class="auto-style1"> <?php echo $password ?> </td>
+        <td style="padding:10px" class="auto-style1"> <?php echo $fname ?> </td>
+        <td style="padding:10px" class="auto-style1"> <?php echo $lname ?> </td>
+        <td style="padding:10px" class="auto-style1"> <?php echo $email ?> </td>
+        <td style="padding:10px" class="auto-style1"> <?php echo $contact ?> </td>
+        <td style="padding:10px" class="auto-style1"> <?php echo $address ?> </td>
+        <td style="padding:10px" class="auto-style1"> <?php echo $state ?> </td>
+        <td style="padding:10px" class="auto-style1"> <?php echo $poscode ?> </td>
+        <td style="padding:10px" class="auto-style2"><a href="update1.php?id=<?php echo $id; ?>">Update</a> / <a href="delete1.php?id=<?php echo $id; ?>">Delete</a><br></td>
+
       </tr>
     <?php
 }}
@@ -303,12 +276,7 @@ echo"</table>";
 
 ?><br>
 </table>
-
-<div>
-<button class="btnadd" onclick="document.location='add.php'">Add new inventory</button>
-</div>
 </div>
 
 </body>
 </html>
-
