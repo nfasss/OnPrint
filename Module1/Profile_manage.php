@@ -2,6 +2,15 @@
 session_start();
 include("database.php");
 include("userlist_mysql.php");
+echo $_SESSION['UserType'];
+
+$query= "SELECT COUNT(UserID) AS sum_totalUser FROM user WHERE UserType= '".$_SESSION['UserType']."';";
+$result = mysqli_query($link, $query);
+if(mysqli_num_rows($result)>0){
+    while($data = mysqli_fetch_array($result)){
+        $UserTotal = $data[0];
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -21,11 +30,11 @@ include("userlist_mysql.php");
             <div class="logo"><a href=''>OnPrint.</a></div>
             <div class="menu">
                 <ul>
-                    <li><a href="homepage.php">Home</a></li>
-                    <li><a href="#courses">Order</a></li>
-                    <li><a href="Profile_manage.php">Our Profile</a></li>
-                    <li><a href="#partners">Contact</a></li>
-                    <li><a href="Login.php" class="btn-login">Sign Up</a></li>
+                <li><a href="homepage.php">Home</a></li>
+                     <li><a href="order.php">Order</a></li>
+                     <li><a href="Profile_manage.php">Our Profile</a></li>
+                     <li><a href="aboutus.php">About Us</a></li>
+                     <li><a href="Login.php" class="btn-login">Sign Up</a></li>
                 </ul>
             </div>
         </div>
@@ -55,29 +64,22 @@ include("userlist_mysql.php");
 
         <form action="#" method="post">
             <table style="width:100%">
-            <tr>
-                        <td>Status</td>
-                        <td>
-                            <select name="UserType">
-                                <option <?php if ($UserType == "Staff") {
-                                            echo "selected";
-                                        } ?> value="staff">Student</option>
-                               <option <?php if ($UserType == "Student") {
-                                            echo "selected";
-                                        } ?> value="student">Administrator</option>
-                                <option <?php if ($UserType == "Administrator") {
-                                            echo "selected";
-                                        } ?> value="administrator">Staff</option>
+                        <label for="choice">Select User Type: </label>
+                            <select name="UserType" id="UserType">
+                                <option value="staff">Staff</option>
+                                <option value="student">Student</option>
+                                <option value="administrator">Administrator</option>
                             </select>
-                        </td>
-                    </tr>
+                            <input type ="submit">
+                            <p>Total User: <u><?php echo ("$UserTotal");?></p>
+               <br>
                 <tr>
                     <th>User ID</th>
                     <th>UserFirstName</th>
                     <th>UserLastName</th>
                     <th>UserEmail</th>
                     <th>UserPhoneNum</th>
-                    <th>UserAddress
+                    <th>UserAddress</th>
                     <th>UserState</th>
                     <th>UserPoscode</th>
                     <th>UserType</th>
@@ -85,13 +87,10 @@ include("userlist_mysql.php");
                 </tr>
                 <?php showUserList() ?>
             </table>
-            <!-- <br>
-            <input type="button" class="btn1" value="Delete" style="padding: 10px 50px;" onclick=" location.href='delete_mysql.php'">
-            <input type="button" class="btn2" value="Edit" style="padding: 10px 50px;" onclick=" location.href='update_mysql.php'">
--->
+        
             <br> <br>
             <input type="button" class="btn1" value="Add User" style="padding: 10px 50px;" onclick=" location.href='register.php'">
-            <input type="button" class="btn2" value="Save" style="padding: 10px 50px;" </form>
+            <input type="button" class="btn2" value="Save" style="padding: 10px 50px;" onclick=" location.href='Profile_manage.php'"</form>
 
     </div>
     <footer>

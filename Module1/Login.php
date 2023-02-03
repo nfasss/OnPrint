@@ -1,6 +1,28 @@
 <?php
 session_start();
 include("database.php");
+if (isset($_POST['submit'])) {
+    $UserID = $_POST['UserID'];
+    $password = $_POST['UserPassword'];
+    $type = $_POST['UserType'];
+    $_SESSION['UserType'] = $_POST['UserType'];
+
+    if (!empty($_POST["submit"]))           //if records were not empty
+    {
+        $loginquery = "SELECT * FROM user WHERE UserID='$' && password='" . ($password) . "'"; //selecting matching records
+        $result = mysqli_query($db, $loginquery); //executing
+        $row = mysqli_fetch_array($result);
+
+        if (is_array($row))  //if matching records in the array & if everything is right
+        {
+            $_SESSION["UserID"] = $row['UserID']; //put user id into temp session
+            $_SESSION['success'] = "You are now logged in";
+            header("location: Login.php"); // redirect to index.php page
+        } else {
+            $message = "Invalid User ID or Password!"; //throw error
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,9 +42,9 @@ include("database.php");
             <div class="menu">
                 <ul>
                     <li><a href="homepage.php">Home</a></li>
-                    <li><a href="#courses">Order</a></li>
+                    <li><a href="order.php">Order</a></li>
                     <li><a href="Profile_manage.php">Our Profile</a></li>
-                    <li><a href="#partners">Contact</a></li>
+                    <li><a href="aboutus.php">About Us</a></li>
                     <li><a href="Login.php" class="btn-login">Sign Up</a></li>
                 </ul>
             </div>

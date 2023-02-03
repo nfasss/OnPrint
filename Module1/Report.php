@@ -3,21 +3,22 @@ session_start();
 include("database.php");
 include("userlist_mysql.php");
 
-if($selected == "staff")
+$link = mysqli_connect("localhost", "root", "", "group2");
+//if($link){
+// $query = "SELECT * FROM user";
+//$result = mysqli_query($link, $query);
+//$chart_data = "";
+//while($UserData = mysqli_fetch_array($result)){
+//  $type[] = $UserData['UserType'];
+//$total_User[] = $UserData['TotalUser'];
+// }
+//}
+$selected = $_SESSION['UserType'];
 
-$query= "SELECT SUM(UserType) AS sum_totalUser FROM user WHERE UserType(staff)=1;";
-$result_totalExpense1 = mysqli_query($link, $query) or die(mysqli_error());
+//}
 
-								if (mysqli_num_rows($result_query) > 0) 
-								{
-									while ($data = mysqli_fetch_array($result_totalUser))
-									{
-										$_SESSION["total_User"] = 0 + $data["sum_totalUser"];
-										$total_User = $_SESSION["total_User"];
-									}
-								}
-							}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,11 +37,11 @@ $result_totalExpense1 = mysqli_query($link, $query) or die(mysqli_error());
             <div class="logo"><a href=''>OnPrint.</a></div>
             <div class="menu">
                 <ul>
-                    <li><a href="homepage.php">Home</a></li>
-                    <li><a href="#courses">Order</a></li>
-                    <li><a href="Profile_manage.php">Our Profile</a></li>
-                    <li><a href="#partners">Contact</a></li>
-                    <li><a href="Login.php" class="btn-login">Sign Up</a></li>
+                <li><a href="homepage.php">Home</a></li>
+                     <li><a href="order.php">Order</a></li>
+                     <li><a href="Profile_manage.php">Our Profile</a></li>
+                     <li><a href="aboutus.php">About Us</a></li>
+                     <li><a href="Login.php" class="btn-login">Sign Up</a></li>
                 </ul>
             </div>
         </div>
@@ -67,21 +68,46 @@ $result_totalExpense1 = mysqli_query($link, $query) or die(mysqli_error());
             <br>
             <li><a href="homepage.php">Logout</a></li>
         </ul>
-       
+
     </div>
     <div class="container_L">
         <canvas id="myChart" style="width:200%;max-width:600px"></canvas>
         <script>
-            var xValues = ["Student", "Staff", "Guest"];
-            var yValues = [55, 49, 4];
+            var xValues = ["Staff", "Student", "Administrator"];
+            var yValues = [0, 0, 0];
+
+            <?php
+            $i = 0;
+
+            $query = "SELECT COUNT(UserType) AS sum_totalUser FROM user GROUP BY UserType;";
+            $result = mysqli_query($link, $query);
+
+            //if (mysqli_num_rows($result) > 0) 
+            //{
+            while ($data = mysqli_fetch_array($result)) {
+                //$_SESSION["UserType"] = $data['UserType'];
+                //$UserTotal = 0 + $data[0];
+
+            ?>
+
+                yValues[parseInt(<?php echo $i; ?>)] = parseInt(<?php echo $data[0]; ?>); //$UserTotal = $_SESSION["total_User"];
+
+            <?php
+                $i++;
+            }
+
+            ?>
+
             var barColors = [
                 "#e8c3b9",
                 "#b91d47",
                 "#00aba9"
             ];
 
+
+
             new Chart("myChart", {
-                type: "pie",
+                type: "bar",
                 data: {
                     labels: xValues,
                     datasets: [{
@@ -98,7 +124,6 @@ $result_totalExpense1 = mysqli_query($link, $query) or die(mysqli_error());
                 }
             });
         </script>
-
 
         <footer>
             <h4>Unless explicitly stated otherwise, all material is copyright &copy; OnPrint 2022.</h4>

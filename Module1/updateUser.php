@@ -264,11 +264,11 @@ mysqli_select_db($link, "group2") or die(mysqli_error($link));
             <div class="logo"><a href=''>OnPrint.</a></div>
             <div class="menu">
                 <ul>
-                    <li><a href="homepage.php">Home</a></li>
-                    <li><a href="#courses">Order</a></li>
-                    <li><a href="Profile_manage.php">Our Profile</a></li>
-                    <li><a href="#partners">Contact</a></li>
-                    <li><a href="Login.php" class="btn-login">Sign Up</a></li>
+                <li><a href="homepage.php">Home</a></li>
+                     <li><a href="order.php">Order</a></li>
+                     <li><a href="Profile_manage.php">Our Profile</a></li>
+                     <li><a href="aboutus.php">About Us</a></li>
+                     <li><a href="Login.php" class="btn-login">Sign Up</a></li>
                 </ul>
             </div>
         </div>
@@ -349,7 +349,8 @@ mysqli_select_db($link, "group2") or die(mysqli_error($link));
 
                 $result = mysqli_query($link, $query);
                 if ($result) {
-                    echo '<script> document.getElementById("UserPhoneNum").innerHTML =("'.$phoneNum.'");</script>';
+                    echo '<script>document.getElementById("UserPhoneNum").innerHTML =("'.$phoneNum.'");</script>';
+                    echo '<script>document.getElementById("UserType").options=("'.$type.'");</script>';
                     echo '<script>document.getElementById("ADDRESS").value ="'. $address.'";</script>';
                     
                 } else {
