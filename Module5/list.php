@@ -194,7 +194,8 @@ h3{
 <h1><img alt="" height="90" src="print.jpg" width="95"></h1>
 <div class="navbar">
   <b href="#"></b>
-  <a href="contact.php"><strong>Logout</strong></a>
+  <a href="contact.php"><strong>Logout</strong></a> 
+  <a href="aboutus.php"><strong>Our Profile</strong></a>
   <a href="contact.php"><strong>Inventory</strong></a>
   <a href="contact.php"><strong>Commission</strong></a>
   <a href="about.php"><strong>Order</strong></a>

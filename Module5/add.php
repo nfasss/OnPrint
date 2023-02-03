@@ -309,6 +309,7 @@ function myFunction2(){
   <div class="navbar">
   <b href="#"></b>
   <a href="login.php"><strong>Logout</strong></a>
+  <a href="aboutus.php"><strong>Our Profile</strong></a>
   <a class="active" href="inventory.php"><strong>Inventory</strong></a>
   <a href="commission.php"><strong>Commission</strong></a>
   <a href="printorder.php"><strong>Order</strong></a>

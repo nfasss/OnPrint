@@ -216,6 +216,7 @@ h3{
   <div class="navbar">
   <b href="#"></b>
   <a href="login.php"></i><strong> Logout</strong></a>
+  <a href="aboutus.php"><strong>Our Profile</strong></a>
   <a href="inventory.php"><strong>Inventory</strong></a>
   <a href="commission.php"><strong>Commission</strong></a>
   <a class="active" href="printorder.php"><strong>Order</strong></a>

@@ -126,8 +126,19 @@ canvas{
         max-height: 400px;
         margin-left: 200px;
 		margin-bottom: 100px;
-		margin-top: -20px;
+		margin-top: 40px;
 }
+.card-body{
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    background-color: gray;
+    padding: 2px;
+    border-radius: 2px;
+    margin-top: 10px;
+    width: 200px;
+   }
+
+
 </style></head><body>
 <div class="auto-style1" style="width: 96%">
 			<label id="Label1">&nbsp;</label>
@@ -157,11 +168,51 @@ canvas{
 			<br />
 			<br />
 		</div>	
+
+		<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary text-white mb-4">
+        <div class="card-body">
+            Total order
+            <?php 
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "printing";
+                
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $query = $conn->query("SELECT * FROM `order`");
+                //$result = mysqli_query($conn,$query);
+                if ($order_total = mysqli_num_rows($query))
+                {
+                    echo '<h4 class="mb-0"> '.$order_total.' </h4>';
+                }
+                else
+                {
+                    echo '<h4 class="mb-0"> No data </h4>';
+                }
+                ?>
+        </div>
+        <div class="card-footer d-flex align_items_center justify-content-between">
+            
+            <div class="small text-white"><a class="small text-white stretched-link" href="printorder.php">Details</a><i class="fas fa-angle-right"></i></div>
+        </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
  <h1><img alt="" height="90" src="print.jpg" width="95"></h1>
   <div class="navbar">
   <b href="#"></b>
   <a href="login.php"><strong>Logout</strong></a>
+  <a href="aboutus.php"><strong>Our Profile</strong></a>
   <a href="inventory.php"><strong>Inventory</strong></a>
   <a href="commission.php"><strong>Commission</strong></a>
   <a href="printorder.php"><strong>Order</strong></a>
